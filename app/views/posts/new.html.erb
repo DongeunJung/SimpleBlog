@@ -1,0 +1,12 @@
+<h1>Posts#new</h1>
+<p>Find me in app/views/posts/new.html.erb</p>
+
+<%= form_tag posts_path do %>
+	<label>Title :</label>
+	<input type="text" name="title" class="form-control">
+	
+	<label>Body :</label>
+	<textarea name="body" class="form-control"></textarea>
+	
+	<input type="submit" value="Create Post" class="form-control btn btn-primary" style="margin-top:20px">
+<% end %>

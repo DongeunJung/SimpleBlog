@@ -1,0 +1,16 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+
+<% @posts.each do |p| %>
+	<div class="well">
+		<h3><%= p.title %></h1>
+		<p>
+			<%=p.body%>
+			
+		</p>
+		<p>
+			<%= link_to 'Read More', post_path(p.id), class:"btn btn-default" %>
+			<label style="float:right"><%=p.member_name%></label>
+		</p>
+	</div>
+<% end %>

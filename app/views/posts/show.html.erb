@@ -1,0 +1,47 @@
+<h1>Posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p>
+
+<% post = Post.find(params[:id]) %>
+
+<div class="container-fluid">
+	<h3><%= post.title %></h3>
+	<p><%= post.body %></p>
+	
+	<hr>
+	<%= link_to 'Edit', edit_post_path(post.id), class:"btn btn-default" %>
+	<%= link_to 'Delete', post_path(post.id), class:"btn btn-danger" %>
+	<hr>
+	
+	<div class="well">
+		<% post.comments.each do |p| %>
+			<label style="color:black"><%=p.member_name%></label>
+			<%=p.comment%>
+			<%=link_to '[X]', post_comment_path(:post_id=>post.id, :id=>p.id), method:"delete"%>
+			<label style="float:right"><%=p.created_at%></label>
+			<hr>
+		<% end %>
+		<%= form_tag post_comments_path(post.id) do%>
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class="glyphicon glyphicon-user"></i>
+				</span>
+				<% if !session[:user_id].nil? %>
+					<input type="text" name="writer" class="form-control" value="<%=Member.find(session[:user_id]).firstname%>" readonly style="background-color:white">
+				<% else %>
+					<input type="text" name="writer" class="form-control" value="Sign in to leave comment" readonly style="background-color:white">
+				<% end %>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class='fas fa-comment-alt'></i>
+				</span>
+				<input type="text" class="form-control" name="comment" placeholder="Comment">
+				<span class="input-group-addon">
+					<button type="submit" style="border:none; background:none;padding:0px">
+						<i class="fa fa-send-o"></i>
+					</button>
+				</span>
+			</div>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<h1>Members#index</h1>
+<p>Find me in app/views/members/index.html.erb</p>
+
+<div class="container-fluid">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Email</th>
+				<th>More</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @members.each do |m| %>
+				<tr>
+					<td><%=m.firstname%></td>
+					<td><%=m.lastname%></td>
+					<td><%=m.email%></td>
+					<td>
+						<%= link_to 'Detail', member_path(m.id), class:"btn btn-success" %>
+						<%= link_to 'Edit', edit_member_path(m.id), class:"btn btn-warning" %>
+						<%= link_to 'Delete', member_path(m.id), data:{confirm:'Are you sure?'}, method:"delete", class:"btn btn-danger" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

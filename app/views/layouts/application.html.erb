@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Project8</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+
+		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<style>
+			label{
+				color:rgb(0,100,200);
+				font-size:15px;
+				margin-top:8px;
+			}
+		</style>
+	</head>
+
+	<body>
+  
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<%= link_to 'FirstBlog', root_path, class:"navbar-brand" %>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Members', members_path %></li>
+				<li><%= link_to 'Create Post', new_post_path %></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<% member = Member.find_by(id:session[:user_id]) %>
+				<% if member.nil? %>
+					<li><%= link_to 'SignUp', new_member_path, class:"glyphicon glyphicon-user" %></li>
+					<li><%= link_to ' Login', login_path, class:"glyphicon glyphicon-log-in" %></li>
+				<% else %>
+					<li>
+						<label style="background-color:white;color:black;padding:8px">
+							User : <%=member.firstname%> <%=member.lastname%>
+							<%= link_to 'MYPAGE', member_path(member.id) %>
+						</label>
+					</li>
+					
+					<li><%= link_to ' Logout', logout_path, method:"delete", class:"glyphicon glyphicon-log-out" %></li>
+				<% end %>
+			</ul>
+		</div>
+	</nav>
+    
+	<div class="container-fluid">
+		<%= yield %>
+	</div>
+  </body>
+</html>

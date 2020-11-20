@@ -1,0 +1,54 @@
+<h1>Members#edit</h1>
+<p>Find me in app/views/members/edit.html.erb</p>
+
+<style>
+	label{
+		color:#f0ad4e;
+		font-size:15px;
+		margin-top:10px;
+	}	
+</style>
+
+<style> 
+input[type=text]:focus {
+	box-shadow: 0px 0px 8px 0px #f0ad4e;
+	border-color:#f0ad4e
+}
+input[type=email]:focus {
+	box-shadow: 0px 0px 8px 0px #f0ad4e;
+	border-color:#f0ad4e
+}
+input[type=password]:focus {
+	box-shadow: 0px 0px 8px 0px #f0ad4e;
+	border-color:#f0ad4e
+}
+input[type=submit]:focus {
+	box-shadow: 0px 0px 8px 0px #f0ad4e;
+	border-color:#f0ad4e
+}
+</style>
+
+<div class="container">
+	<h1>Edit Account</h1>
+	<%=form_tag member_path(params[:id]), method:"patch" do%>
+		<label>*Firstname :</label>
+		<input type="text" name="firstname" class="form-control" value="<%=@member.firstname%>">
+		
+		<label>*Lastname :</label>
+		<input type="text" name="lastname" class="form-control" value="<%=@member.lastname%>">
+		
+		<label>*E-Mail :</label>
+		<input type="email" name="email" class="form-control" value="<%=@member.email%>">
+		
+		<label>Gender :</label>
+		<input type="text" name="gender" class="form-control" value="<%=@detail.gender%>">
+		
+		<label>Phone number :</label>
+		<input type="text" name="phone" class="form-control" value="<%=@detail.phone%>">
+		
+		<label>Address :</label>
+		<input type="text" name="address" class="form-control" value="<%=@detail.address%>">
+		
+		<input type="submit" value="Edit Account" class="form-control btn btn-warning" style="margin-top:25px">
+	<% end %>
+</div>

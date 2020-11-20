@@ -1,0 +1,64 @@
+<h1>Members#show</h1>
+<p>Find me in app/views/members/show.html.erb</p>
+
+<style>
+	label{
+		color:black;
+	}
+</style>
+
+<div class="container">
+	<h1>Member's Information</h1>
+	<h1><% member = @member %></h1>
+	<h1><% detail = @detail %></h1>
+	
+	<table class="table table-bordered" style="border-width:4px">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Information</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><label style="color:#5cb85c">Membership</label></td>
+				<td><label style="color:#5cb85c"><%=@member.id%></label></td>
+			</tr>
+			<tr>
+				<td><label>Firstname</label></td>
+				<td><%=member.firstname%></td>
+			</tr>
+			<tr>
+				<td><label>Lastname</label></td>
+				<td><%=member.lastname%></td>
+			</tr>
+			<tr>
+				<td><label>E-Mail</label></td>
+				<td><%=member.email%></td>
+			</tr>
+			
+			<tr>
+				<td><label>Gender</label></td>
+				<td><%=detail.gender%></td>
+			</tr>
+			<tr>
+				<td><label>Phone#</label></td>
+				<td><%=detail.phone%></td>
+			</tr>
+			<tr>
+				<td><label>E-Mail</label></td>
+				<td><%=detail.address%></td>
+			</tr>
+			<tr>
+				<%date = member.created_at %>
+				<td><label style="color:#5cb85c">Created_at</label></td>
+				<td><label style="color:#5cb85c"><%=date%></label></td>
+			</tr>
+			<tr>
+				<%date = member.created_at %>
+				<td><label style="color:#5cb85c">Updated_at</label></td>
+				<td><label style="color:#5cb85c"><%=date%></label></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

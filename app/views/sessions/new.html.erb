@@ -1,0 +1,31 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+<style>
+	label{
+		color:rgb(0,100,200);
+		font-size:15px;
+		margin-top:10px;
+	}
+</style>
+
+<div class="container">
+	<h1>Sign In</h1>
+	
+	<% flash.each do |name, msg| %>
+		<div class="alert alert-warning"><%=msg%></div>
+	<% end %>
+	
+	<%= form_tag login_path do %>
+		<label>E-Mail</label>
+		<input type="email" name="email" class="form-control">
+		
+		<label>Password</label>
+		<input type="password" name="password" class="form-control">
+		
+		<input type="submit" value="Sign In" class="form-control btn btn-primary" style="margin-top:20px">
+		
+		<label style="color:black">new user?</label>
+		<%=link_to 'create new account', new_member_path %>
+	<% end %>
+</div>
